@@ -12,7 +12,7 @@ int main()
 	size_t N, M;
 	std::cout << "Enter N and M: ";
 	//std::cin >> N >> M;
-	N = 3; M = 3; //test
+	N = 4; M = 4; //test
 	std::cout << "N and M are set to: " << N << "," << M << std::endl;
 		
 	//Allocate Map:
@@ -43,6 +43,9 @@ int main()
 
 	Solver solve(N,M, map,start);
 	solve.findAllPaths();
+	std::cout << "\nPath to specific location:";
+	Cell x(2,2);
+	solve.findPath(&x);
 
 	
 	//DELETION:
