@@ -35,7 +35,7 @@ int main()
 	size_t xStart, yStart;
 	std::cout << "Enter X and Y of start point: ";
 	//std::cin >> xStart >> yStart;
-	xStart = 1; yStart = 1; //test
+	xStart = 2; yStart = 1; //test
 	std::cout << "\nStart is set to: " <<  xStart << "," << yStart << std::endl;
 
 

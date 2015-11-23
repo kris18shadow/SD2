@@ -22,6 +22,7 @@ private:
 
 	Queue<Cell*> cellQueue;
 	DynamicArray<Relatives> relatives;
+	DynamicArray<Cell> availablePaths;
 	Cell* pCurrent;
 
 	void tryUp(bool showStep);

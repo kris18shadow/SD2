@@ -35,6 +35,11 @@ Solver::~Solver()
 void Solver::findPath(Cell* END)
 {
 	//Using BFS:
+	for (size_t i = 0; i < N; i++)
+		for (size_t k = 0; k < M; k++)
+			cellMap[i][k].markUnvisited();
+
+
 	Cell* pStart = &START;
 	cellQueue.push(pStart);
 	bool noPath = true;
@@ -63,10 +68,12 @@ void Solver::findPath(Cell* END)
 			}
 
 			std::cout << "\nPath: ";
-			std::cout << " (" << START.getY() << ", " << START.getX() << ") ";
+			START.printCell();
+			//std::cout << " (" << START.getY() << ", " << START.getX() << ") ";
 			while (!path.isEmpty())
 			{
-				std::cout << " (" << path.peek()->getY() << ", " << path.peek()->getX() << ") ";
+				//std::cout << " (" << path.peek()->getY() << ", " << path.peek()->getX() << ") ";
+				path.peek()->printCell();
 				path.pop();
 			}
 			std::cout << std::endl;
@@ -122,7 +129,10 @@ void Solver::tryUp(bool showStep)
 		relatives.pushBack(temp);
 
 		if (showStep)
+		{
 			cellMap[pCurrent->getX()][pCurrent->getY() - 1].printCell();
+			availablePaths.pushBack(cellMap[pCurrent->getX()][pCurrent->getY() - 1]);
+		}
 	}
 }
 
@@ -141,7 +151,10 @@ void Solver::tryDown(bool showStep)
 		relatives.pushBack(temp);
 
 		if (showStep)
+		{
 			cellMap[pCurrent->getX()][pCurrent->getY() + 1].printCell();
+			availablePaths.pushBack(cellMap[pCurrent->getX()][pCurrent->getY() + 1]);
+		}
 	}
 }
 
@@ -160,7 +173,10 @@ void Solver::tryRight(bool showStep)
 		relatives.pushBack(temp);
 
 		if (showStep)
+		{
 			cellMap[pCurrent->getX() + 1][pCurrent->getY()].printCell();
+			availablePaths.pushBack(cellMap[pCurrent->getX() + 1][pCurrent->getY()]);
+		}
 	}
 }
 
@@ -179,6 +195,9 @@ void Solver::tryLeft(bool showStep)
 		relatives.pushBack(temp);
 
 		if (showStep)
+		{
 			cellMap[pCurrent->getX() - 1][pCurrent->getY()].printCell();
+			availablePaths.pushBack(cellMap[pCurrent->getX() - 1][pCurrent->getY()]);
+		}
 	}
 }

@@ -34,6 +34,11 @@ void Cell::markVisited()
 	this->visited = true;
 }
 
+void Cell::markUnvisited()
+{
+	this->visited = false;
+}
+
 Cell& Cell::operator=(const Cell& other)
 {
 	if (this != &other)

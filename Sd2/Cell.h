@@ -12,6 +12,7 @@ public:
 	void setY(size_t y);
 	void setSymbol(char s);
 	void markVisited();
+	void markUnvisited();
 
 	Cell& operator=(const Cell& other);
 
