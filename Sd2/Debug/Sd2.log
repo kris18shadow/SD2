@@ -1,14 +1,19 @@
-﻿Build started 16.11.2015 г. 18:29:42.
-     1>Project "C:\Users\Chris\Documents\Visual Studio 2015\Projects\Sd2\Sd2\Sd2.vcxproj" on node 2 (Build target(s)).
+﻿Build started 23.11.2015 г. 13:15:20.
+     1>Project "C:\Users\Chris\documents\visual studio 2015\Projects\Sd2\Sd2\Sd2.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
+     1>c:\users\chris\documents\visual studio 2015\projects\sd2\sd2\solver.h(44): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\chris\documents\visual studio 2015\projects\sd2\sd2\solver.h(48): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\chris\documents\visual studio 2015\projects\sd2\sd2\solver.h(50): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\chris\documents\visual studio 2015\projects\sd2\sd2\solver.h(64): warning C4018: '<': signed/unsigned mismatch
        Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Chris\Documents\Visual Studio 2015\Projects\Sd2\Debug\Sd2.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Chris\Documents\Visual Studio 2015\Projects\Sd2\Debug\Sd2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Chris\Documents\Visual Studio 2015\Projects\Sd2\Debug\Sd2.lib" /MACHINE:X86 Debug\Cell.obj
+         D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Chris\documents\visual studio 2015\Projects\Sd2\Debug\Sd2.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Chris\documents\visual studio 2015\Projects\Sd2\Debug\Sd2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Chris\documents\visual studio 2015\Projects\Sd2\Debug\Sd2.lib" /MACHINE:X86 Debug\Cell.obj
          Debug\main.obj
-         Sd2.vcxproj -> C:\Users\Chris\Documents\Visual Studio 2015\Projects\Sd2\Debug\Sd2.exe
-     1>Done Building Project "C:\Users\Chris\Documents\Visual Studio 2015\Projects\Sd2\Sd2\Sd2.vcxproj" (Build target(s)).
+         Debug\Solver.obj
+         Sd2.vcxproj -> C:\Users\Chris\documents\visual studio 2015\Projects\Sd2\Debug\Sd2.exe
+     1>Done Building Project "C:\Users\Chris\documents\visual studio 2015\Projects\Sd2\Sd2\Sd2.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:08.04
+Time Elapsed 00:00:03.66

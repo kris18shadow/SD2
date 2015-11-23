@@ -1,4 +1,5 @@
 #include "Cell.h"
+#include <iostream>
 
 Cell::Cell(size_t x, size_t y, char symbol)
 {
@@ -33,6 +34,16 @@ void Cell::markVisited()
 	this->visited = true;
 }
 
+Cell& Cell::operator=(const Cell& other)
+{
+	if (this != &other)
+	{
+		this->x = other.x;
+		this->y = other.y;
+	}
+	return *this;
+}
+
 int Cell::getX() const
 {
 	return this->x;
@@ -46,4 +57,9 @@ int Cell::getY() const
 char Cell::getSymbol() const
 {
 	return this->symbol;
+}
+
+void Cell::printCell() const
+{
+	std::cout << " (" << getX() << ", " << getY() << ") ";
 }

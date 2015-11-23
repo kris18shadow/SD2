@@ -2,6 +2,7 @@
 
 class Cell
 {
+private:
 	char symbol;
 	int x, y;
 	bool visited;
@@ -12,8 +13,11 @@ public:
 	void setSymbol(char s);
 	void markVisited();
 
+	Cell& operator=(const Cell& other);
+
 	int getX() const;
 	int getY() const;
 	bool isVisited() const;
 	char  getSymbol() const;
+	void printCell() const;
 };

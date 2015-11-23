@@ -24,8 +24,8 @@ public:
 	Queue(Queue const& other);
 	Queue& operator=(Queue const& other);
 
-	void insertElem(T const& newElem);
-	int deleteElem();
+	void push(T const& newElem);
+	int pop();
 
 	bool empty() const;
 	T peek() const;
@@ -59,8 +59,7 @@ Queue<T>& Queue<T>::operator=(Queue const& other)
 template<class T>
 void Queue<T>::delQueue()
 {
-	T x;
-	while (deleteElem());
+	while (pop());
 	size = 0;
 }
 
@@ -73,7 +72,7 @@ void Queue<T>::copy(Queue const& other)
 		elemQ<T> *p = other.front;
 		while (p)
 		{
-			insertElem(p->data);
+			push(p->data);
 			p = p->next;
 		}
 	}
@@ -82,7 +81,7 @@ void Queue<T>::copy(Queue const& other)
 }
 
 template<class T>
-void Queue<T>::insertElem(T const& newElem)
+void Queue<T>::push(T const& newElem)
 {
 	elemQ<T> *p = new elemQ<T>;
 	p->data = newElem;
@@ -97,7 +96,7 @@ void Queue<T>::insertElem(T const& newElem)
 }
 
 template<class T>
-int Queue<T>::deleteElem()
+int Queue<T>::pop()
 {
 	elemQ<T> *p;
 	if (!rear)
