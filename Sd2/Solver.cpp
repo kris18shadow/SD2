@@ -92,7 +92,7 @@ void Solver::findPath(Cell* END)
 		std::cout << "\nNo path available!\n";
 }
 
-void Solver::findAllPaths()
+void Solver::findAvailableCells()
 {
 	Cell* pStart = &START;
 	cellQueue.push(pStart);
@@ -112,6 +112,18 @@ void Solver::findAllPaths()
 		tryRight(true);
 		tryLeft(true);
 	}
+}
+
+void Solver::findAllPaths()
+{
+	for (size_t i = 0; i < availablePaths.getCurrSize(); i++)
+	{
+		std::cout << "\n\nPoint ";
+		availablePaths[i].printCell();
+		std::cout << " :\n";
+		findPath(&availablePaths[i]);		
+	}
+	std::cout << std::endl;
 }
 
 void Solver::tryUp(bool showStep)

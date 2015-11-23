@@ -33,5 +33,6 @@ public:
 	Solver(int N, int M, char** cellMap, Cell START);
 	~Solver();
 	void findPath(Cell* END);
+	void findAvailableCells();
 	void findAllPaths();
 };

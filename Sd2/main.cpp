@@ -19,7 +19,9 @@ int main()
 	char** map = new char*[N];
 	for (size_t i = 0; i < N; i++)
 		map[i] = new char[M];
+
 	//Enter Map:
+	std::cout << "Enter map:\n";
 	char* buffer = new char[M];
 	for (size_t i = 0; i < N; i++)
 	{
@@ -36,16 +38,15 @@ int main()
 	std::cout << "Enter X and Y of start point: ";
 	//std::cin >> xStart >> yStart;
 	xStart = 2; yStart = 1; //test
-	std::cout << "\nStart is set to: " <<  xStart << "," << yStart << std::endl;
+	std::cout << "\nStart is set to: (" <<  xStart << ", " << yStart << ")" << std::endl;
 
 
 	Cell start(xStart, yStart, '.');
 
 	Solver solve(N,M, map,start);
+	std::cout << "\nAll available cells: ";
+	solve.findAvailableCells();
 	solve.findAllPaths();
-	std::cout << "\nPath to specific location:";
-	Cell x(2,2);
-	solve.findPath(&x);
 
 	
 	//DELETION:
