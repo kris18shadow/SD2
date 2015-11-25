@@ -53,6 +53,7 @@ int main()
 	for (size_t i = 0; i < N; i++)
 		delete map[i];
 	delete map;
+	delete buffer;
 
 	return 0;
 }
