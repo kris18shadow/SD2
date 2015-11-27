@@ -126,7 +126,7 @@ void Solver::findAllPaths()
 	std::cout << std::endl;
 }
 
-void Solver::tryUp(bool showStep)
+void Solver::tryLeft(bool showStep)
 {
 	if (pCurrent->getY() - 1 >= 0
 		&& cellMap[pCurrent->getX()][pCurrent->getY() - 1].getSymbol() == '.'
@@ -148,7 +148,7 @@ void Solver::tryUp(bool showStep)
 	}
 }
 
-void Solver::tryDown(bool showStep)
+void Solver::tryRight(bool showStep)
 {
 	if (pCurrent->getY() + 1 < M
 		&& cellMap[pCurrent->getX()][pCurrent->getY() + 1].getSymbol() == '.'
@@ -170,7 +170,7 @@ void Solver::tryDown(bool showStep)
 	}
 }
 
-void Solver::tryRight(bool showStep)
+void Solver::tryDown(bool showStep)
 {
 	if (pCurrent->getX() + 1 < N
 		&& cellMap[pCurrent->getX() + 1][pCurrent->getY()].getSymbol() == '.'
@@ -192,7 +192,7 @@ void Solver::tryRight(bool showStep)
 	}
 }
 
-void Solver::tryLeft(bool showStep)
+void Solver::tryUp(bool showStep)
 {
 	if (pCurrent->getX() - 1 >= 0
 		&& cellMap[pCurrent->getX() - 1][pCurrent->getY()].getSymbol() == '.'
