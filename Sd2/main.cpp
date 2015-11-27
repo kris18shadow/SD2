@@ -22,7 +22,7 @@ int main()
 
 	//Enter Map:
 	std::cout << "Enter map:\n";
-	char* buffer = new char[M];
+	char* buffer = new char[M+1];
 	for (size_t i = 0; i < N; i++)
 	{
 		std::cout << "Enter line No." << i << ": ";
@@ -52,8 +52,8 @@ int main()
 	//DELETION:
 	for (size_t i = 0; i < N; i++)
 		delete map[i];
-	delete map;
-	delete buffer;
+	delete map;	
+	delete[] buffer;
 
 	return 0;
 }
