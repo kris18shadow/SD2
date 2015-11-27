@@ -38,10 +38,10 @@ int main()
 	std::cout << "Enter X and Y of start point: ";
 	//std::cin >> xStart >> yStart;
 	xStart = 2; yStart = 1; //test
-	std::cout << "\nStart is set to: (" <<  xStart << ", " << yStart << ")" << std::endl;
-
-
+	
 	Cell start(xStart, yStart, '.');
+	std::cout << "\nStart is set to: ";
+	start.printCell();
 
 	Solver solve(N,M, map,start);
 	std::cout << "\nAll available cells: ";

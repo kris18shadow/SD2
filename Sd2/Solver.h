@@ -14,8 +14,8 @@ struct Relatives
 class Solver
 {
 private:
-	int N;
-	int M;
+	size_t N;
+	size_t M;
 	
 	Cell** cellMap;
 	Cell START;

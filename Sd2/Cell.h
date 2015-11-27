@@ -4,7 +4,7 @@ class Cell
 {
 private:
 	char symbol;
-	int x, y;
+	size_t x, y;
 	bool visited;
 public:
 	Cell(size_t x = 0, size_t y = 0, char symbol = '.');
