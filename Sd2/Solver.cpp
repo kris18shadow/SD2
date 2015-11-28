@@ -1,6 +1,6 @@
 #include "Solver.h"
 
-Solver::Solver(int N, int M, char** Map, Cell START)
+Solver::Solver(size_t N, size_t M, char** Map, Cell START)
 {
 	this->N = N;
 	this->M = M;
@@ -22,6 +22,7 @@ Solver::Solver(int N, int M, char** Map, Cell START)
 	}
 
 	this->START = START;
+	this->pCurrent = NULL;
 }
 
 Solver::~Solver()
@@ -34,17 +35,18 @@ Solver::~Solver()
 
 void Solver::findPath(Cell* END)
 {
-	//Using BFS:
+	//Mark all cells as unvisited:
 	for (size_t i = 0; i < N; i++)
 		for (size_t k = 0; k < M; k++)
 			cellMap[i][k].markUnvisited();
 
 
+	//Using BFS:
 	Cell* pStart = &START;
 	cellQueue.push(pStart);
 	bool noPath = true;
 
-	while (!cellQueue.empty())
+ 	while (!cellQueue.empty())
 	{
 
 		pCurrent = cellQueue.peek();
@@ -52,32 +54,25 @@ void Solver::findPath(Cell* END)
 		cellMap[pCurrent->getX()][pCurrent->getY()].markVisited();
 		cellQueue.pop();
 
-		if (pCurrent->getX() == END->getX() && pCurrent->getY() == END->getY())
+		if (*pCurrent == *END)
 		{
 			noPath = false;
 			Stack<Cell*> path;
 			while (pCurrent != pStart)
 			{
 				path.push(pCurrent);
-				for (size_t i = 0; i < relatives.getCurrSize(); i++)
-					if (relatives[i].child == pCurrent)
-					{
-						pCurrent = relatives[i].parent;
-						break;
-					}
+				pCurrent = pCurrent->getParent();
 			}
 
-			std::cout << "\nPath: ";
+			std::cout << "\n>>>>> ";
 			START.printCell();
-			//std::cout << " (" << START.getY() << ", " << START.getX() << ") ";
 			while (!path.isEmpty())
 			{
-				//std::cout << " (" << path.peek()->getY() << ", " << path.peek()->getX() << ") ";
 				path.peek()->printCell();
 				path.pop();
 			}
 			std::cout << std::endl;
-			break;
+			cellMap[END->getX()][END->getY()].markUnvisited();
 		}
 		else
 		{
@@ -86,10 +81,7 @@ void Solver::findPath(Cell* END)
 			tryRight(false);
 			tryLeft(false);
 		}
-	}
-
-	if (noPath)
-		std::cout << "\nNo path available!\n";
+	}	
 }
 
 void Solver::findAvailableCells()
@@ -106,7 +98,7 @@ void Solver::findAvailableCells()
 		cellMap[pCurrent->getX()][pCurrent->getY()].markVisited();
 		cellQueue.pop();
 
-
+		//argument true == prints every step
 		tryUp(true);
 		tryDown(true);
 		tryRight(true);
@@ -134,11 +126,8 @@ void Solver::tryLeft(bool showStep)
 	{
 		cellQueue.push(&cellMap[pCurrent->getX()][pCurrent->getY() - 1]);
 		cellMap[pCurrent->getX()][pCurrent->getY() - 1].markVisited();
-
-		Relatives temp;
-		temp.child = &cellMap[pCurrent->getX()][pCurrent->getY() - 1];
-		temp.parent = pCurrent;
-		relatives.pushBack(temp);
+		
+		cellMap[pCurrent->getX()][pCurrent->getY() - 1].setParent(pCurrent);
 
 		if (showStep)
 		{
@@ -157,10 +146,7 @@ void Solver::tryRight(bool showStep)
 		cellQueue.push(&cellMap[pCurrent->getX()][pCurrent->getY() + 1]);
 		cellMap[pCurrent->getX()][pCurrent->getY() + 1].markVisited();
 
-		Relatives temp;
-		temp.child = &cellMap[pCurrent->getX()][pCurrent->getY() + 1];
-		temp.parent = pCurrent;
-		relatives.pushBack(temp);
+		cellMap[pCurrent->getX()][pCurrent->getY() + 1].setParent(pCurrent);
 
 		if (showStep)
 		{
@@ -179,10 +165,7 @@ void Solver::tryDown(bool showStep)
 		cellQueue.push(&cellMap[pCurrent->getX() + 1][pCurrent->getY()]);
 		cellMap[pCurrent->getX() + 1][pCurrent->getY()].markVisited();
 
-		Relatives temp;
-		temp.child = &cellMap[pCurrent->getX() + 1][pCurrent->getY()];
-		temp.parent = pCurrent;
-		relatives.pushBack(temp);
+		cellMap[pCurrent->getX() + 1][pCurrent->getY()].setParent(pCurrent);
 
 		if (showStep)
 		{
@@ -201,10 +184,7 @@ void Solver::tryUp(bool showStep)
 		cellQueue.push(&cellMap[pCurrent->getX() - 1][pCurrent->getY()]);
 		cellMap[pCurrent->getX() - 1][pCurrent->getY()].markVisited();
 
-		Relatives temp;
-		temp.child = &cellMap[pCurrent->getX() - 1][pCurrent->getY()];
-		temp.parent = pCurrent;
-		relatives.pushBack(temp);
+		cellMap[pCurrent->getX() - 1][pCurrent->getY()].setParent(pCurrent);
 
 		if (showStep)
 		{

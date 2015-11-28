@@ -20,7 +20,7 @@ private:
 
 	void delStack();
 public:
-	Stack<T>();
+	Stack<T>() : length(0), pTop(NULL) {};
 	~Stack<T>();
 
 	void push(const T& elem);
@@ -43,14 +43,6 @@ void Stack<T>::delStack()
 }
 
 template<typename T>
-Stack<T>::Stack()
-{
-	length = 0;
-	pTop = NULL;
-}
-
-
-template<typename T>
 Stack<T>::~Stack()
 {
 	delStack();
@@ -71,7 +63,7 @@ template<typename T>
 void Stack<T>::pop()
 {
 	if (isEmpty())
-		throw "Trying to pop from empty stack!\n";
+		std::cerr << "Trying to pop from empty stack!\n";
 
 	Box<T>* prev = pTop->pNext;
 	delete pTop;
@@ -96,7 +88,7 @@ template<typename T>
 T Stack<T>::peek() const
 {
 	if (isEmpty())
-		throw "Trying to peek from empty stack!\n";
+		std::cerr << "Trying to peek from empty stack!\n";
 
 	return pTop->data;
 }

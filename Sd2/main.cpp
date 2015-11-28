@@ -11,8 +11,12 @@ int main()
 	//N and M input:
 	size_t N, M;
 	std::cout << "Enter N and M: ";
-	//std::cin >> N >> M;
-	N = 4; M = 4; //test
+	std::cin >> N >> M;
+	if (N <= 0 || M <= 0 || !std::cin)
+	{
+		std::cerr << "Bad input!\n";
+		return 1;
+	}
 	std::cout << "N and M are set to: " << N << "," << M << std::endl;
 		
 	//Allocate Map:
@@ -28,6 +32,12 @@ int main()
 		std::cout << "Enter line No." << i << ": ";
 		std::cin >> buffer;
 
+		if (strlen(buffer) != 3)
+		{
+			std::cerr << "Bad Input!\n";
+			return 1;
+		}
+
 		for (size_t k = 0; k < M; k++)
 			map[i][k] = buffer[k];
 	}
@@ -36,15 +46,21 @@ int main()
 	//Start point input:
 	size_t xStart, yStart;
 	std::cout << "Enter X and Y of start point: ";
-	//std::cin >> xStart >> yStart;
-	xStart = 2; yStart = 1; //test
+	std::cin >> xStart >> yStart;
+	if (xStart < 0 || yStart < 0 || xStart > N-1 || yStart > M-1 || !std::cin)
+	{
+		std::cerr << "Bad input!\n";
+		return 1;
+	}
 	
+	//Creating Starting cell: 
 	Cell start(xStart, yStart, '.');
 	std::cout << "\nStart is set to: ";
 	start.printCell();
 
+	//Creating solver:
 	Solver solve(N,M, map,start);
-	std::cout << "\nAll available cells: ";
+	std::cout << "\n\nAll available cells: ";
 	solve.findAvailableCells();
 	solve.findAllPaths();
 

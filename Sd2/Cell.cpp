@@ -49,6 +49,11 @@ Cell& Cell::operator=(const Cell& other)
 	return *this;
 }
 
+bool Cell::operator==(const Cell& other) const
+{
+	return this->x == other.x && this->y == other.y;
+}
+
 int Cell::getX() const
 {
 	return this->x;
@@ -57,6 +62,16 @@ int Cell::getX() const
 int Cell::getY() const
 {
 	return this->y;
+}
+
+void Cell::setParent(Cell* temp)
+{
+	this->parent = temp;
+}
+
+Cell* Cell::getParent() const
+{
+	return this->parent;
 }
 
 char Cell::getSymbol() const

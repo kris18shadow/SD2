@@ -7,7 +7,7 @@ class DynamicArray
 	size_t size, currentSize;
 	void resize();
 public:
-	DynamicArray();
+	DynamicArray() : arr(NULL), size(0), currentSize(0) {};
 	~DynamicArray();
 	T& operator[](size_t i);
 	size_t getCurrSize() const;
@@ -45,13 +45,6 @@ void DynamicArray<T>::resize()
 	}
 
 	this->size = newSize;
-}
-
-template<class T>
-DynamicArray<T>::DynamicArray()
-{
-	arr = NULL; 
-	size = currentSize = 0;
 }
 
 template<class T>
